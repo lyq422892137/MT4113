@@ -171,6 +171,7 @@ Para.checkArguments <- function(arg1, arg2, arg3, arg4) {
 bootStrap <- function(dataset, B, n) {
   # generate the bootstrap data set
   boot.set <- replicate(B, dataset[sample.int(n, replace = TRUE)])
+  #boot.set <- sample(boot.set, B)
   # generate the mean set by bootstrap
   boot.mean <- apply(boot.set, 1, mean)
   # order the mean set from low to high
