@@ -73,7 +73,8 @@ Para.percentileMethod <- function(dataset, alpha = 0.05, B = 10000, distribution
 }
 
 ## Non-parametric balanced bootstrap
-## input: 
+## input: B: the size of bootstraped sample 
+# sets: every subset contains sets values
 
 NonPara.balancedBootstrap <- function(dataset, alpha = 0.05, B = 1000, sets = 10) {
   if((B/sets)%%1 != 0) {
@@ -85,6 +86,7 @@ NonPara.balancedBootstrap <- function(dataset, alpha = 0.05, B = 1000, sets = 10
   if(N < 1) {
     stop("invalid argument")
   } else {
+    #### too complicated so I chose an easy way
     # N <- ceiling(N)
     # data.subset1 <- numeric(n/2)
     # data.subset2 <- numeric(n-length(data.subset1))
