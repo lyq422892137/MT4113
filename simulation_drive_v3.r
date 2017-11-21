@@ -13,6 +13,7 @@ generateData <- function(type = 0, n = 30, lambda = 0, sd = 1, seed = 999) {
 
 
 ######################################################################
+# just for fun
 
 sim.data <- c(1:10000)
 sim.data <- sample(sim.data,1000, replace = FALSE)
@@ -21,13 +22,15 @@ simulation.v2(data = sim.data, lambda = mean(sim.data), alpha =  0.05,  round = 
 #####################################################################
 ## simulation 1
 #sink('D:/MT4113/Simulation1.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
-  sim.data <- generateData(n = 10000, lambda = 9.888, sd = 8)
+  sim.data <- generateData(n = 50, lambda = 9.888, sd = 8)
   mean(sim.data)
   print("    round 10     ")
   simulation.v2(data = sim.data, lambda = 9.888, round = 10, B = 10)
+  simulation.v2(data = sim.data, lambda = 9.888, round = 10, B = 100)
   print("    round 100     ")
+  simulation.v2(data = sim.data, lambda = 9.888, round = 100, B = 10)
   simulation.v2(data = sim.data, lambda = 9.888, round = 100, B = 100)
   print("                                                      ")
 }
@@ -36,19 +39,21 @@ for(k in 1:10) {
   simulation.v2(data = sim.data, lambda = 9.888,  round = 1000)
 }
 
-##sink()
+#sink()
 
 #####################################################################
 ## simulation 2
 #sink('D:/MT4113/Simulation2.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
   sim.data <- generateData(type = 1, n = 50, lambda = 9.8, sd = 2)
   mean(sim.data)
   print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson")
-  print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson")
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", B = 10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", B = 100)
+  print("    round 100     ")
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", B = 10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", B = 100)
   print("                                                      ")
 }
 for(k in 1:10) {
@@ -59,15 +64,17 @@ for(k in 1:10) {
 #####################################################################
 ## simulation 3
 #sink('D:/MT4113/Simulation3.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
   
   sim.data <- generateData(n = 10, lambda = 9.8, sd = 2)
   mean(sim.data)
   print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, B = 10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, B = 100)
   print("    round 100     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 100)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, B = 10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, B = 100)
   print("                                                      ")
 }
 
@@ -79,14 +86,16 @@ for(k in 1:10) {
 #####################################################################
 ## simulation 4
 #sink('D:/MT4113/Simulation4.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
   sim.data <- generateData(type = 1, n = 10, lambda = 9.8, sd = 2)
   mean(sim.data)
   print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson")
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", B = 10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", B = 100)
   print("    round 100     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson")
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", B =10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", B =100)
   print("                                                      ")
 }
 for(k in 1:10) {
@@ -96,15 +105,16 @@ for(k in 1:10) {
 #####################################################################
 ## simulation 5
 #sink('D:/MT4113/Simulation5.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
   sim.data <- generateData(n = 50, lambda = 9.8, sd = 2)
   mean(sim.data)
   print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 10, alpha = 0.01)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, alpha = 0.01, B = 10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, alpha = 0.01, B = 100)
   print("    round 100     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 100, alpha = 0.01)
-  
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, alpha = 0.01, B =10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, alpha = 0.01, B =100)
   print("                                                      ")
 }
 for(k in 1:10) {
@@ -114,15 +124,18 @@ for(k in 1:10) {
 #####################################################################
 ## simulation 6
 #sink('D:/MT4113/Simulation6.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
   sim.data <- generateData(type = 1, n = 50, lambda = 9.8, sd = 2)
   mean(sim.data)
   print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", alpha = 0.01)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", alpha = 0.01, B =10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", alpha = 0.01, B =100)
   
   print("    round 100     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", alpha = 0.01)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", alpha = 0.01, B =10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", alpha = 0.01, B =100)
+  
   
   print("                                                      ")
 }
@@ -134,14 +147,16 @@ for(k in 1:10) {
 #####################################################################
 ## simulation 7
 #sink('D:/MT4113/Simulation7.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
   sim.data <- generateData(n = 50, lambda = 123.3, sd = 2)
   mean(sim.data)
   print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 123.3, round = 10, alpha = 0.02)
+  simulation.v2(data = sim.data, lambda = 123.3, round = 10, alpha = 0.02, B =10)
+  simulation.v2(data = sim.data, lambda = 123.3, round = 10, alpha = 0.02, B =100)
   print("    round 100     ")
-  simulation.v2(data = sim.data, lambda = 123.3, round = 100, alpha = 0.02)
+  simulation.v2(data = sim.data, lambda = 123.3, round = 100, alpha = 0.02, B = 10)
+  simulation.v2(data = sim.data, lambda = 123.3, round = 100, alpha = 0.02, B = 100)
   print("                                                      ")
 }
 
@@ -152,14 +167,17 @@ for(k in 1:10) {
 #####################################################################
 ## simulation 8
 #sink('D:/MT4113/Simulation8.txt')
-for(u in 1:200){
+for(u in 1:100){
   print("                                                      ")
   sim.data <- generateData(type = 1, n = 50, lambda = 9.8, sd = 2)
   mean(sim.data)
   print("    round 10     ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", alpha = 0.02)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", alpha = 0.02, B =10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 10, distribution = "poisson", alpha = 0.02, B =100)
   print("    round 100    ")
-  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", alpha = 0.02)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", alpha = 0.02, B =10)
+  simulation.v2(data = sim.data, lambda = 9.8, round = 100, distribution = "poisson", alpha = 0.02, B =100)
+  
   print("                                                      ")
 }
 for(k in 1:10) {

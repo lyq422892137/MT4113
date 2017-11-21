@@ -8,7 +8,8 @@ source('D:/MT4113/bootstrapFunction.r') # under Windows
 ## inputs:
 # n: the sample size
 # round: the loop number
-# distribution: normal or poisson
+# distribution: normal or poisson, it is only used for parametric bootstrap.
+# The default value is normal distribution
 # lambda: the mean used to generate the dataset
 # sd: the sd of the normal distribution used to generate the dataset
 # alpha: the confidence level
@@ -22,22 +23,31 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
   count.right.set <- numeric(3)
   count.left.set <- numeric(3)
   
+  
   method.set <- numeric(round)
   coverage.set <- numeric(round)
   smaller.set <- numeric(round)
   bigger.set <- numeric(round)
   bootmean.set <- numeric(round)
   n.set <- numeric(round)
-  B.set <- numeric(round)
+  B.set <- rep(B,round)
+  round.set <- rep(round,round)
   difference.set <- numeric(round)
   length.set <-numeric(round)
   distribution.set <- numeric(round)
+  truemean.set <- rep(lambda,round)
+  writeflag <- 1
+  
+  filepath <- "D:/MT4113/Info.txt"
+    
   data.mean <- lambda
+  
   
     for(i in 1:round) {
       result1 <- NonPara.percentileMethod(dataset = data, alpha = alpha, B = B)
+    
       result2 <- NonPara.BCaMethod(dataset = data, alpha = alpha, B = B)
-      
+     
       if(dataType == 0) { # normal
         result3 <- Para.percentileMethod(dataset = data, alpha =  alpha, distribution = "normal", B = B)
       } else { # poisson
@@ -64,14 +74,54 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
       differ1[i] <- c1[[4]]
       differ2[i] <- c2[[4]]
       differ3[i] <- c3[[4]]
+      
+      # write the information into csv
+      for(num in 1 : 3) {
+        method.set[writeflag] <- num
+        coverage.set[writeflag] <- count.overall.set[num]/round
+        smaller.set[writeflag] <- count.left.set[num]/round
+        bigger.set[writeflag]<- count.right.set[num]/round
+        n.set[writeflag] <- length(data)
+        if(num == 1) {
+          bootmean.set[writeflag]<- mean(result1) 
+          difference.set[writeflag] <- data.mean - mean(result1)
+          length.set[writeflag] <- differ1[i]
+        } else if (num ==2) {
+          bootmean.set[writeflag] <- mean(result2)
+          difference.set[writeflag] <- data.mean - mean(result2)
+          length.set[writeflag] <- differ2[i]
+        } else {
+          bootmean.set[writeflag] <- mean(result3)
+          difference.set[writeflag] <- data.mean -mean(result3)
+          length.set[writeflag] <- differ3[i]
+        }
+        
+        if(dataType ==0) {
+          distribution.set[writeflag] <- "normal"
+        } else {
+          distribution.set[writeflag] <- "poisson"
+        }
 
+        writeflag <- writeflag + 1;
+      }
+      
     }
   
-  print("result1----------------")
+  
+  info <- data.frame(method.set,coverage.set,smaller.set,bigger.set,truemean.set, bootmean.set, n.set,  B.set, round.set, difference.set, length.set, distribution.set)
+  if(!file.exists(filepath)) {
+    options(warn=-1) 
+    write.table(info,file = filepath, append = TRUE, row.names = FALSE, sep = "\t")
+  } else {
+    write.table(info,file = filepath, append = TRUE, row.names = FALSE, sep = "\t", col.names=FALSE)
+  }
+  
+  print("Bootstrap means----------------")
+  print("result1---------NonPara.percentileMethod-------")
   print(result1)
-  print("result2----------------")
+  print("result2---------NonPara.BCaMethod-------")
   print(result2)
-  print("result3----------------")
+  print("result3---------Para.percentileMethod-------")
   print(result3)
   
   outputs(1,result1,data.mean,count.overall.set[1],count.left.set[1], count.right.set[1], round, differ1)
@@ -152,24 +202,23 @@ outputs <- function(type, bootmean, Tmean, count1, count2, count3, round, differ
 
 # classify the bootstrap outcomes every round
 classify <- function(result, truemean, count.overall, count.left, count.right) {
-
-  #classify the results
-  if(truemean>=result[1] & truemean<=result[length(result)]){
-    count.overall <- count.overall + 1
-  } else if (truemean>=result[length(result)]) {
-    count.right <- count.right + 1
-  } else {
-    count.left <- count.left + 1
+  if(length(result) != 0) {
+    #classify the results
+    if(truemean>=result[1] & truemean<=result[length(result)]){
+      count.overall <- count.overall + 1
+    } else if (truemean>=result[length(result)]) {
+      count.right <- count.right + 1
+    } else {
+      count.left <- count.left + 1
+    }
+    
+    difference <- result[1] - result[length(result)]
+  } else{
+    difference <- 0
   }
-  
-  difference <- result[1] - result[length(result)]
+ 
   outcome <- list(count.overall,count.right,count.left,difference)
   return(outcome)
 
-}
-
-
-backUp <- function(methodType, coverage, smaller, biggger, truemean, bootmean, n, B, round, difference, CIlength, distributionType) {
-  
 }
 
