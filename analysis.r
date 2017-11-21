@@ -967,7 +967,7 @@ hist(sim5.Para.B2.round2$coverage.set)
 ################################################################
 
 ################## B3, round3#################
-sim5.B3.round3 <- sim5[which(sim5$B.set == 100 & sim5$round.set == 10),]
+sim5.B3.round3 <- sim5[which(sim5$B.set == 1000 & sim5$round.set == 1000),]
 sim5.nonPara.percentile.B3.round3  <- sim5.B3.round3[which(sim5$method.set == 1),]
 sim5.nonPara.BCa.B3.round3 <- sim5.B3.round3[which(sim5$method.set == 2),]
 sim5.Para.B3.round3 <- sim5.B3.round3[which(sim5$method.set == 3),]
@@ -979,15 +979,49 @@ summary(sim5.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
 print("Parametric Percentile Method--------------------")
 summary(sim5.Para.B3.round3[c(2,3,4,5,6,10,11)])
 ######summary result#################
+# > print("Non-Parametric Percentile Method----------------")
+# [1] "Non-Parametric Percentile Method----------------"
+# > summary(sim5.nonPara.percentile.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set    length.set    
+# Min.   :0.000   Min.   :0       Min.   :0.001   Min.   :9.8     Min.   :8.894   Min.   :0.832   Min.   :-1.731  
+# 1st Qu.:0.003   1st Qu.:0       1st Qu.:0.247   1st Qu.:9.8     1st Qu.:8.925   1st Qu.:0.863   1st Qu.:-1.532  
+# Median :0.005   Median :0       Median :0.494   Median :9.8     Median :8.931   Median :0.869   Median :-1.490  
+# Mean   :0.006   Mean   :0       Mean   :0.494   Mean   :9.8     Mean   :8.931   Mean   :0.869   Mean   :-1.492  
+# 3rd Qu.:0.009   3rd Qu.:0       3rd Qu.:0.741   3rd Qu.:9.8     3rd Qu.:8.937   3rd Qu.:0.875   3rd Qu.:-1.449  
+# Max.   :0.018   Max.   :0       Max.   :0.994   Max.   :9.8     Max.   :8.968   Max.   :0.906   Max.   :-1.284  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   
+# > print("Non-Parametric BCa------------------------------")
+# [1] "Non-Parametric BCa------------------------------"
+# > summary(sim5.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
+#   coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set    length.set    
+#  Min.   :0.000   Min.   :0       Min.   :0.001   Min.   :9.8     Min.   :8.903   Min.   :0.837   Min.   :-1.745  
+#  1st Qu.:0.006   1st Qu.:0       1st Qu.:0.245   1st Qu.:9.8     1st Qu.:8.926   1st Qu.:0.863   1st Qu.:-1.532  
+#  Median :0.011   Median :0       Median :0.489   Median :9.8     Median :8.931   Median :0.869   Median :-1.491  
+#  Mean   :0.012   Mean   :0       Mean   :0.488   Mean   :9.8     Mean   :8.931   Mean   :0.869   Mean   :-1.492  
+#  3rd Qu.:0.019   3rd Qu.:0       3rd Qu.:0.733   3rd Qu.:9.8     3rd Qu.:8.937   3rd Qu.:0.874   3rd Qu.:-1.450  
+#  Max.   :0.032   Max.   :0       Max.   :0.983   Max.   :9.8     Max.   :8.963   Max.   :0.897   Max.   :-1.288  
+#  NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   
+# > print("Parametric Percentile Method--------------------")
+# [1] "Parametric Percentile Method--------------------"
+# > summary(sim5.Para.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set    length.set    
+# Min.   :0.000   Min.   :0       Min.   :0.001   Min.   :9.8     Min.   :8.895   Min.   :0.831   Min.   :-1.810  
+# 1st Qu.:0.002   1st Qu.:0       1st Qu.:0.248   1st Qu.:9.8     1st Qu.:8.925   1st Qu.:0.862   1st Qu.:-1.553  
+# Median :0.005   Median :0       Median :0.495   Median :9.8     Median :8.931   Median :0.869   Median :-1.509  
+# Mean   :0.005   Mean   :0       Mean   :0.496   Mean   :9.8     Mean   :8.931   Mean   :0.869   Mean   :-1.511  
+# 3rd Qu.:0.008   3rd Qu.:0       3rd Qu.:0.743   3rd Qu.:9.8     3rd Qu.:8.938   3rd Qu.:0.875   3rd Qu.:-1.468  
+# Max.   :0.017   Max.   :0       Max.   :0.996   Max.   :9.8     Max.   :8.969   Max.   :0.905   Max.   :-1.309  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   
+# > 
 ##############hist#################
 hist(sim5.nonPara.percentile.B3.round3$coverage.set)
 hist(sim5.nonPara.BCa.B3.round3$coverage.set)
 hist(sim5.Para.B3.round3$coverage.set)
-######summary conlclusion###################
-# 1. coverage no obvious difference, m1 and m3 are a little better
-# 2. all mehtods' not coveraged means tend to be balanced
-# 3. boot mean m2 best
-# 4. ci lenght no obvious difference, m2 better a little
+###super bad###summary conlclusion###################
+# 1. coverage are very bad, 0.02
+# 2. all mehtods' not coveraged means tend to be bigger than CI, very high
+# 3. boot mean no obvious difference
+# 4. ci lenght no obvious difference
 
 ################################################################
 
@@ -996,61 +1030,13 @@ hist(sim5.Para.B3.round3$coverage.set)
 #### 
 
 ## analyse the different methods for n = 50, alpha = 0.01, and poisson distribution
-# here I will compare the different Bs or rounds' effects
+# here I will not  compare the different Bs or rounds' effects
+# so I will only use B2, round2, B3 round 3
 sim6<- boot.result[which(boot.result$n.set == 50 & boot.result$distribution.set == "poisson" & boot.result$alpha.set == 0.01),]
+################################################################
 
-# B1, round1
-sim6.B1.round1 <- sim6[which(sim6$B.set == 10 & sim6$round.set == 10),]
-sim6.nonPara.percentile.B1.round1  <- sim6.B1.round1[which(sim6$method.set == 1),]
-sim6.nonPara.BCa.B1.round1 <- sim6.B1.round1[which(sim6$method.set == 2),]
-sim6.Para.B1.round1 <- sim6.B1.round1[which(sim6$method.set == 3),]
+################### B2, round2##################
 
-print("Non-Parametric Percentile Method----------------")
-summary(sim6.nonPara.percentile.B1.round1[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim6.nonPara.BCa.B1.round1[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim6.Para.B1.round1[c(2,3,4,5,6,10,11)])
-
-hist(sim6.nonPara.percentile.B1.round1$coverage.set)
-hist(sim6.nonPara.BCa.B1.round1$coverage.set)
-hist(sim6.Para.B1.round1$coverage.set)
-
-# B1, round2
-sim6.B1.round2 <- sim6[which(sim6$B.set == 10 & sim6$round.set == 100),]
-sim6.nonPara.percentile.B1.round2  <- sim6.B1.round2[which(sim6$method.set == 1),]
-sim6.nonPara.BCa.B1.round2 <- sim6.B1.round2[which(sim6$method.set == 2),]
-sim6.Para.B1.round2 <- sim6.B1.round2[which(sim6$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim6.nonPara.percentile.B1.round2[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim6.nonPara.BCa.B1.round2[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim6.Para.B1.round2[c(2,3,4,5,6,10,11)])
-
-hist(sim6.nonPara.percentile.B1.round2$coverage.set)
-hist(sim6.nonPara.BCa.B1.round2$coverage.set)
-hist(sim6.Para.B1.round1$coverage.set)
-
-# B2, round1
-sim6.B2.round1 <- sim6[which(sim6$B.set == 100 & sim6$round.set == 10),]
-sim6.nonPara.percentile.B2.round1  <- sim6.B2.round1[which(sim6$method.set == 1),]
-sim6.nonPara.BCa.B2.round1 <- sim6.B2.round1[which(sim6$method.set == 2),]
-sim6.Para.B2.round1 <- sim6.B2.round1[which(sim6$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim6.nonPara.percentile.B2.round1[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim6.nonPara.BCa.B2.round1[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim6.Para.B2.round1[c(2,3,4,5,6,10,11)])
-
-hist(sim6.nonPara.percentile.B2.round1$coverage.set)
-hist(sim6.nonPara.BCa.B2.round1$coverage.set)
-hist(sim6.Para.B2.round1$coverage.set)
-
-# B2, round2
 sim6.B2.round2 <- sim6[which(sim6$B.set == 100 & sim6$round.set == 100),]
 sim6.nonPara.percentile.B2.round2  <- sim6.B2.round2[which(sim6$method.set == 1),]
 sim6.nonPara.BCa.B2.round2 <- sim6.B2.round2[which(sim6$method.set == 2),]
@@ -1062,13 +1048,54 @@ print("Non-Parametric BCa------------------------------")
 summary(sim6.nonPara.BCa.B2.round2[c(2,3,4,5,6,10,11)])
 print("Parametric Percentile Method--------------------")
 summary(sim6.Para.B2.round2[c(2,3,4,5,6,10,11)])
-
+######summary result#############
+# > print("Non-Parametric Percentile Method----------------")
+# [1] "Non-Parametric Percentile Method----------------"
+# > summary(sim6.nonPara.percentile.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set    difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :9.8     Min.   : 8.640   Min.   :-1.135   Min.   :-3.303  
+# 1st Qu.:0.250   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:9.8     1st Qu.: 9.600   1st Qu.:-0.291   1st Qu.:-2.234  
+# Median :0.490   Median :0.000   Median :0.000   Median :9.8     Median : 9.826   Median :-0.026   Median :-2.031  
+# Mean   :0.496   Mean   :0.002   Mean   :0.008   Mean   :9.8     Mean   : 9.829   Mean   :-0.029   Mean   :-2.049  
+# 3rd Qu.:0.742   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:9.8     3rd Qu.:10.091   3rd Qu.: 0.200   3rd Qu.:-1.844  
+# Max.   :1.000   Max.   :0.140   Max.   :0.690   Max.   :9.8     Max.   :10.935   Max.   : 1.160   Max.   :-1.241  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000    NA's   :22000   
+# > print("Non-Parametric BCa------------------------------")
+# [1] "Non-Parametric BCa------------------------------"
+# > summary(sim6.nonPara.BCa.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set    difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :9.8     Min.   : 8.675   Min.   :-1.171   Min.   :-3.229  
+# 1st Qu.:0.240   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:9.8     1st Qu.: 9.599   1st Qu.:-0.289   1st Qu.:-2.204  
+# Median :0.490   Median :0.000   Median :0.000   Median :9.8     Median : 9.823   Median :-0.023   Median :-1.999  
+# Mean   :0.493   Mean   :0.003   Mean   :0.009   Mean   :9.8     Mean   : 9.828   Mean   :-0.028   Mean   :-2.016  
+# 3rd Qu.:0.740   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:9.8     3rd Qu.:10.089   3rd Qu.: 0.201   3rd Qu.:-1.810  
+# Max.   :1.000   Max.   :0.240   Max.   :0.810   Max.   :9.8     Max.   :10.971   Max.   : 1.125   Max.   :-1.189  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000    NA's   :22000   
+# > print("Parametric Percentile Method--------------------")
+# [1] "Parametric Percentile Method--------------------"
+# > summary(sim6.Para.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set    difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :9.8     Min.   : 8.633   Min.   :-1.118   Min.   :-3.087  
+# 1st Qu.:0.250   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:9.8     1st Qu.: 9.601   1st Qu.:-0.294   1st Qu.:-2.202  
+# Median :0.490   Median :0.000   Median :0.000   Median :9.8     Median : 9.826   Median :-0.026   Median :-2.052  
+# Mean   :0.496   Mean   :0.003   Mean   :0.006   Mean   :9.8     Mean   : 9.829   Mean   :-0.029   Mean   :-2.064  
+# 3rd Qu.:0.740   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:9.8     3rd Qu.:10.094   3rd Qu.: 0.199   3rd Qu.:-1.913  
+# Max.   :1.000   Max.   :0.410   Max.   :0.710   Max.   :9.8     Max.   :10.918   Max.   : 1.167   Max.   :-1.442  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000    NA's   :22000  
+##############hist all coverage rates from 0 to 1 are even#############
 hist(sim6.nonPara.percentile.B2.round2$coverage.set)
 hist(sim6.nonPara.BCa.B2.round2$coverage.set)
 hist(sim6.Para.B2.round2$coverage.set)
+######summary conlclusion###################
+# 1. coverage becomes normal
+# 2. all mehtods' not coveraged means tend to be balanced
+# 3. boot mean no obvious difference
+# 4. ci lenght m2 best
 
-# B3, round3
-sim6.B3.round3 <- sim6[which(sim6$B.set == 100 & sim6$round.set == 10),]
+################################################################
+
+#################### B3, round3###################
+sim6.B3.round3 <- sim6[which(sim6$B.set == 1000 & sim6$round.set == 1000),]
 sim6.nonPara.percentile.B3.round3  <- sim6.B3.round3[which(sim6$method.set == 1),]
 sim6.nonPara.BCa.B3.round3 <- sim6.B3.round3[which(sim6$method.set == 2),]
 sim6.Para.B3.round3 <- sim6.B3.round3[which(sim6$method.set == 3),]
@@ -1079,10 +1106,51 @@ print("Non-Parametric BCa------------------------------")
 summary(sim6.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
 print("Parametric Percentile Method--------------------")
 summary(sim6.Para.B3.round3[c(2,3,4,5,6,10,11)])
-
+######summary result######
+# > print("Non-Parametric Percentile Method----------------")
+# [1] "Non-Parametric Percentile Method----------------"
+# > summary(sim6.nonPara.percentile.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set    length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :9.8     Min.   :9.486   Min.   :0.212   Min.   :-2.500  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:9.8     1st Qu.:9.531   1st Qu.:0.251   1st Qu.:-2.220  
+# Median :0.500   Median :0       Median :0       Median :9.8     Median :9.540   Median :0.260   Median :-2.160  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :9.8     Mean   :9.540   Mean   :0.260   Mean   :-2.156  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:9.8     3rd Qu.:9.549   3rd Qu.:0.269   3rd Qu.:-2.100  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :9.8     Max.   :9.588   Max.   :0.314   Max.   :-1.820  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   
+# > print("Non-Parametric BCa------------------------------")
+# [1] "Non-Parametric BCa------------------------------"
+# > summary(sim6.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set    length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :9.8     Min.   :9.499   Min.   :0.220   Min.   :-2.495  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:9.8     1st Qu.:9.531   1st Qu.:0.254   1st Qu.:-2.217  
+# Median :0.500   Median :0       Median :0       Median :9.8     Median :9.539   Median :0.261   Median :-2.158  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :9.8     Mean   :9.539   Mean   :0.261   Mean   :-2.159  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:9.8     3rd Qu.:9.546   3rd Qu.:0.269   3rd Qu.:-2.100  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :9.8     Max.   :9.580   Max.   :0.301   Max.   :-1.873  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   
+# > print("Parametric Percentile Method--------------------")
+# [1] "Parametric Percentile Method--------------------"
+# > summary(sim6.Para.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set    length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :9.8     Min.   :9.481   Min.   :0.212   Min.   :-2.560  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:9.8     1st Qu.:9.530   1st Qu.:0.251   1st Qu.:-2.280  
+# Median :0.500   Median :0       Median :0       Median :9.8     Median :9.540   Median :0.260   Median :-2.220  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :9.8     Mean   :9.540   Mean   :0.260   Mean   :-2.219  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:9.8     3rd Qu.:9.549   3rd Qu.:0.270   3rd Qu.:-2.160  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :9.8     Max.   :9.588   Max.   :0.319   Max.   :-1.940  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   
+##############hist######
 hist(sim6.nonPara.percentile.B3.round3$coverage.set)
 hist(sim6.nonPara.BCa.B3.round3$coverage.set)
 hist(sim6.Para.B3.round3$coverage.set)
+######summary conlclusion###################
+# 1. coverage becomes normal
+# 2. all mehtods' not coveraged means tend to be balanced
+# 3. boot mean no obvious difference
+# 4. ci lenght  no obvious difference
+
+################################################################
 
 
 
@@ -1090,61 +1158,12 @@ hist(sim6.Para.B3.round3$coverage.set)
 #### 
 
 ## analyse the different methods for n = 50, alpha = 0.02, and normal distribution
-# here I will compare the different Bs or rounds' effects
+# here I will not  compare the different Bs or rounds' effects
+# so I will only use B2, round2, B3 round 3
 sim7<- boot.result[which(boot.result$n.set == 50 & boot.result$distribution.set == "normal" & boot.result$alpha.set == 0.02),]
+################################################################
 
-# B1, round1
-sim7.B1.round1 <- sim7[which(sim7$B.set == 10 & sim7$round.set == 10),]
-sim7.nonPara.percentile.B1.round1  <- sim7.B1.round1[which(sim7$method.set == 1),]
-sim7.nonPara.BCa.B1.round1 <- sim7.B1.round1[which(sim7$method.set == 2),]
-sim7.Para.B1.round1 <- sim7.B1.round1[which(sim7$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim7.nonPara.percentile.B1.round1[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim7.nonPara.BCa.B1.round1[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim7.Para.B1.round1[c(2,3,4,5,6,10,11)])
-
-hist(sim7.nonPara.percentile.B1.round1$coverage.set)
-hist(sim7.nonPara.BCa.B1.round1$coverage.set)
-hist(sim7.Para.B1.round1$coverage.set)
-
-# B1, round2
-sim7.B1.round2 <- sim7[which(sim7$B.set == 10 & sim7$round.set == 100),]
-sim7.nonPara.percentile.B1.round2  <- sim7.B1.round2[which(sim7$method.set == 1),]
-sim7.nonPara.BCa.B1.round2 <- sim7.B1.round2[which(sim7$method.set == 2),]
-sim7.Para.B1.round2 <- sim7.B1.round2[which(sim7$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim7.nonPara.percentile.B1.round2[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim7.nonPara.BCa.B1.round2[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim7.Para.B1.round2[c(2,3,4,5,6,10,11)])
-
-hist(sim7.nonPara.percentile.B1.round2$coverage.set)
-hist(sim7.nonPara.BCa.B1.round2$coverage.set)
-hist(sim7.Para.B1.round1$coverage.set)
-
-# B2, round1
-sim7.B2.round1 <- sim7[which(sim7$B.set == 100 & sim7$round.set == 10),]
-sim7.nonPara.percentile.B2.round1  <- sim7.B2.round1[which(sim7$method.set == 1),]
-sim7.nonPara.BCa.B2.round1 <- sim7.B2.round1[which(sim7$method.set == 2),]
-sim7.Para.B2.round1 <- sim7.B2.round1[which(sim7$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim7.nonPara.percentile.B2.round1[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim7.nonPara.BCa.B2.round1[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim7.Para.B2.round1[c(2,3,4,5,6,10,11)])
-
-hist(sim7.nonPara.percentile.B2.round1$coverage.set)
-hist(sim7.nonPara.BCa.B2.round1$coverage.set)
-hist(sim7.Para.B2.round1$coverage.set)
-
-# B2, round2
+###################### B2, round2#####################
 sim7.B2.round2 <- sim7[which(sim7$B.set == 100 & sim7$round.set == 100),]
 sim7.nonPara.percentile.B2.round2  <- sim7.B2.round2[which(sim7$method.set == 1),]
 sim7.nonPara.BCa.B2.round2 <- sim7.B2.round2[which(sim7$method.set == 2),]
@@ -1156,13 +1175,54 @@ print("Non-Parametric BCa------------------------------")
 summary(sim7.nonPara.BCa.B2.round2[c(2,3,4,5,6,10,11)])
 print("Parametric Percentile Method--------------------")
 summary(sim7.Para.B2.round2[c(2,3,4,5,6,10,11)])
-
+######summary result############
+# > print("Non-Parametric Percentile Method----------------")
+# [1] "Non-Parametric Percentile Method----------------"
+# > summary(sim7.nonPara.percentile.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :123.3   Min.   :122.7   Min.   :-0.840   Min.   :-2.057  
+# 1st Qu.:0.230   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:123.3   1st Qu.:123.1   1st Qu.:-0.180   1st Qu.:-1.329  
+# Median :0.480   Median :0.000   Median :0.000   Median :123.3   Median :123.3   Median :-0.002   Median :-1.197  
+# Mean   :0.488   Mean   :0.013   Mean   :0.004   Mean   :123.3   Mean   :123.3   Mean   :-0.022   Mean   :-1.205  
+# 3rd Qu.:0.740   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:123.3   3rd Qu.:123.5   3rd Qu.: 0.154   3rd Qu.:-1.075  
+# Max.   :1.000   Max.   :0.940   Max.   :0.790   Max.   :123.3   Max.   :124.1   Max.   : 0.551   Max.   :-0.706  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+# > print("Non-Parametric BCa------------------------------")
+# [1] "Non-Parametric BCa------------------------------"
+# > summary(sim7.nonPara.BCa.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :123.3   Min.   :122.7   Min.   :-0.837   Min.   :-1.917  
+# 1st Qu.:0.230   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:123.3   1st Qu.:123.1   1st Qu.:-0.179   1st Qu.:-1.321  
+# Median :0.480   Median :0.000   Median :0.000   Median :123.3   Median :123.3   Median : 0.001   Median :-1.194  
+# Mean   :0.488   Mean   :0.013   Mean   :0.004   Mean   :123.3   Mean   :123.3   Mean   :-0.022   Mean   :-1.204  
+# 3rd Qu.:0.740   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:123.3   3rd Qu.:123.5   3rd Qu.: 0.153   3rd Qu.:-1.076  
+# Max.   :1.000   Max.   :0.960   Max.   :0.780   Max.   :123.3   Max.   :124.1   Max.   : 0.552   Max.   :-0.656  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+# > print("Parametric Percentile Method--------------------")
+# [1] "Parametric Percentile Method--------------------"
+# > summary(sim7.Para.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :123.3   Min.   :122.8   Min.   :-0.840   Min.   :-1.939  
+# 1st Qu.:0.230   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:123.3   1st Qu.:123.1   1st Qu.:-0.181   1st Qu.:-1.336  
+# Median :0.480   Median :0.000   Median :0.000   Median :123.3   Median :123.3   Median :-0.003   Median :-1.205  
+# Mean   :0.489   Mean   :0.013   Mean   :0.003   Mean   :123.3   Mean   :123.3   Mean   :-0.022   Mean   :-1.215  
+# 3rd Qu.:0.740   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:123.3   3rd Qu.:123.5   3rd Qu.: 0.156   3rd Qu.:-1.084  
+# Max.   :1.000   Max.   :0.980   Max.   :0.640   Max.   :123.3   Max.   :124.1   Max.   : 0.550   Max.   :-0.711  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+##############hist############
 hist(sim7.nonPara.percentile.B2.round2$coverage.set)
 hist(sim7.nonPara.BCa.B2.round2$coverage.set)
 hist(sim7.Para.B2.round2$coverage.set)
+######summary conlclusion###################
+# 1. coverage becomes normal
+# 2. all mehtods' not coveraged means tend to be smaller than CI
+# 3. boot mean no obvious difference
+# 4. ci lenght  no obvious difference
 
-# B3, round3
-sim7.B3.round3 <- sim7[which(sim7$B.set == 100 & sim7$round.set == 10),]
+################################################################
+
+###################### B3, round3###################
+sim7.B3.round3 <- sim7[which(sim7$B.set == 1000 & sim7$round.set == 1000),]
 sim7.nonPara.percentile.B3.round3  <- sim7.B3.round3[which(sim7$method.set == 1),]
 sim7.nonPara.BCa.B3.round3 <- sim7.B3.round3[which(sim7$method.set == 2),]
 sim7.Para.B3.round3 <- sim7.B3.round3[which(sim7$method.set == 3),]
@@ -1173,70 +1233,63 @@ print("Non-Parametric BCa------------------------------")
 summary(sim7.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
 print("Parametric Percentile Method--------------------")
 summary(sim7.Para.B3.round3[c(2,3,4,5,6,10,11)])
-
+######summary result#####################
+# > print("Non-Parametric Percentile Method----------------")
+# [1] "Non-Parametric Percentile Method----------------"
+# > summary(sim7.nonPara.percentile.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :123.3   Min.   :123.4   Min.   :-0.207   Min.   :-1.551  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:123.3   1st Qu.:123.5   1st Qu.:-0.167   1st Qu.:-1.403  
+# Median :0.500   Median :0       Median :0       Median :123.3   Median :123.5   Median :-0.160   Median :-1.370  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :123.3   Mean   :123.5   Mean   :-0.160   Mean   :-1.371  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:123.3   3rd Qu.:123.5   3rd Qu.:-0.154   3rd Qu.:-1.338  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :123.3   Max.   :123.5   Max.   :-0.124   Max.   :-1.200  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+# > print("Non-Parametric BCa------------------------------")
+# [1] "Non-Parametric BCa------------------------------"
+# > summary(sim7.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :123.3   Min.   :123.4   Min.   :-0.188   Min.   :-1.550  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:123.3   1st Qu.:123.5   1st Qu.:-0.165   1st Qu.:-1.402  
+# Median :0.500   Median :0       Median :0       Median :123.3   Median :123.5   Median :-0.160   Median :-1.370  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :123.3   Mean   :123.5   Mean   :-0.160   Mean   :-1.371  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:123.3   3rd Qu.:123.5   3rd Qu.:-0.155   3rd Qu.:-1.338  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :123.3   Max.   :123.5   Max.   :-0.133   Max.   :-1.206  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+# > print("Parametric Percentile Method--------------------")
+# [1] "Parametric Percentile Method--------------------"
+# > summary(sim7.Para.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :123.3   Min.   :123.4   Min.   :-0.194   Min.   :-1.579  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:123.3   1st Qu.:123.5   1st Qu.:-0.167   1st Qu.:-1.419  
+# Median :0.500   Median :0       Median :0       Median :123.3   Median :123.5   Median :-0.160   Median :-1.385  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :123.3   Mean   :123.5   Mean   :-0.160   Mean   :-1.387  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:123.3   3rd Qu.:123.5   3rd Qu.:-0.154   3rd Qu.:-1.353  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :123.3   Max.   :123.5   Max.   :-0.124   Max.   :-1.227  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+##############hist#####################
 hist(sim7.nonPara.percentile.B3.round3$coverage.set)
 hist(sim7.nonPara.BCa.B3.round3$coverage.set)
 hist(sim7.Para.B3.round3$coverage.set)
+######summary conlclusion###################
+# 1. coverage becomes normal
+# 2. all mehtods' not coveraged means tend to be balanced
+# 3. boot mean no obvious difference
+# 4. ci lenght  no obvious difference, m1 and m2 better a little
+
+################################################################
+
 
 #######simulation8###############################################
 #### 
 
-## analyse the different methods for n = 50, alpha = 0.05, and poisson distribution
-# here I will compare the different Bs or rounds' effects
+## analyse the different methods for n = 50, alpha = 0.02, and poisson distribution
+# here I will not  compare the different Bs or rounds' effects
+# so I will only use B2, round2, B3 round 3
 sim8<- boot.result[which(boot.result$n.set == 50 & boot.result$distribution.set == "poisson" & boot.result$alpha.set == 0.02),]
+#####################################################
 
-# B1, round1
-sim8.B1.round1 <- sim8[which(sim8$B.set == 10 & sim8$round.set == 10),]
-sim8.nonPara.percentile.B1.round1  <- sim8.B1.round1[which(sim8$method.set == 1),]
-sim8.nonPara.BCa.B1.round1 <- sim8.B1.round1[which(sim8$method.set == 2),]
-sim8.Para.B1.round1 <- sim8.B1.round1[which(sim8$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim8.nonPara.percentile.B1.round1[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim8.nonPara.BCa.B1.round1[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim8.Para.B1.round1[c(2,3,4,5,6,10,11)])
-
-hist(sim8.nonPara.percentile.B1.round1$coverage.set)
-hist(sim8.nonPara.BCa.B1.round1$coverage.set)
-hist(sim8.Para.B1.round1$coverage.set)
-
-# B1, round2
-sim8.B1.round2 <- sim8[which(sim8$B.set == 10 & sim8$round.set == 100),]
-sim8.nonPara.percentile.B1.round2  <- sim8.B1.round2[which(sim8$method.set == 1),]
-sim8.nonPara.BCa.B1.round2 <- sim8.B1.round2[which(sim8$method.set == 2),]
-sim8.Para.B1.round2 <- sim8.B1.round2[which(sim8$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim8.nonPara.percentile.B1.round2[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim8.nonPara.BCa.B1.round2[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim8.Para.B1.round2[c(2,3,4,5,6,10,11)])
-
-hist(sim8.nonPara.percentile.B1.round2$coverage.set)
-hist(sim8.nonPara.BCa.B1.round2$coverage.set)
-hist(sim8.Para.B1.round1$coverage.set)
-
-# B2, round1
-sim8.B2.round1 <- sim8[which(sim8$B.set == 100 & sim8$round.set == 10),]
-sim8.nonPara.percentile.B2.round1  <- sim8.B2.round1[which(sim8$method.set == 1),]
-sim8.nonPara.BCa.B2.round1 <- sim8.B2.round1[which(sim8$method.set == 2),]
-sim8.Para.B2.round1 <- sim8.B2.round1[which(sim8$method.set == 3),]
-
-print("Non-Parametric Percentile Method----------------")
-summary(sim8.nonPara.percentile.B2.round1[c(2,3,4,5,6,10,11)])
-print("Non-Parametric BCa------------------------------")
-summary(sim8.nonPara.BCa.B2.round1[c(2,3,4,5,6,10,11)])
-print("Parametric Percentile Method--------------------")
-summary(sim8.Para.B2.round1[c(2,3,4,5,6,10,11)])
-
-hist(sim8.nonPara.percentile.B2.round1$coverage.set)
-hist(sim8.nonPara.BCa.B2.round1$coverage.set)
-hist(sim8.Para.B2.round1$coverage.set)
-
-# B2, round2
+############# B2, round2############
 sim8.B2.round2 <- sim8[which(sim8$B.set == 100 & sim8$round.set == 100),]
 sim8.nonPara.percentile.B2.round2  <- sim8.B2.round2[which(sim8$method.set == 1),]
 sim8.nonPara.BCa.B2.round2 <- sim8.B2.round2[which(sim8$method.set == 2),]
@@ -1248,13 +1301,54 @@ print("Non-Parametric BCa------------------------------")
 summary(sim8.nonPara.BCa.B2.round2[c(2,3,4,5,6,10,11)])
 print("Parametric Percentile Method--------------------")
 summary(sim8.Para.B2.round2[c(2,3,4,5,6,10,11)])
-
+######summary result############
+# > print("Non-Parametric Percentile Method----------------")
+# [1] "Non-Parametric Percentile Method----------------"
+# > summary(sim8.nonPara.percentile.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set    difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :9.8     Min.   : 8.688   Min.   :-1.107   Min.   :-3.121  
+# 1st Qu.:0.238   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:9.8     1st Qu.: 9.446   1st Qu.:-0.168   1st Qu.:-2.061  
+# Median :0.480   Median :0.000   Median :0.000   Median :9.8     Median : 9.704   Median : 0.096   Median :-1.861  
+# Mean   :0.485   Mean   :0.007   Mean   :0.013   Mean   :9.8     Mean   : 9.718   Mean   : 0.082   Mean   :-1.873  
+# 3rd Qu.:0.730   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:9.8     3rd Qu.: 9.968   3rd Qu.: 0.354   3rd Qu.:-1.681  
+# Max.   :1.000   Max.   :0.610   Max.   :0.990   Max.   :9.8     Max.   :10.907   Max.   : 1.112   Max.   :-1.103  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000    NA's   :22000   
+# > print("Non-Parametric BCa------------------------------")
+# [1] "Non-Parametric BCa------------------------------"
+# > summary(sim8.nonPara.BCa.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set    difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :9.8     Min.   : 8.753   Min.   :-1.042   Min.   :-3.117  
+# 1st Qu.:0.238   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:9.8     1st Qu.: 9.441   1st Qu.:-0.163   1st Qu.:-2.050  
+# Median :0.470   Median :0.000   Median :0.000   Median :9.8     Median : 9.704   Median : 0.096   Median :-1.860  
+# Mean   :0.484   Mean   :0.007   Mean   :0.014   Mean   :9.8     Mean   : 9.717   Mean   : 0.083   Mean   :-1.873  
+# 3rd Qu.:0.730   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:9.8     3rd Qu.: 9.963   3rd Qu.: 0.359   3rd Qu.:-1.680  
+# Max.   :1.000   Max.   :0.490   Max.   :0.970   Max.   :9.8     Max.   :10.842   Max.   : 1.047   Max.   :-1.091  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000    NA's   :22000   
+# > print("Parametric Percentile Method--------------------")
+# [1] "Parametric Percentile Method--------------------"
+# > summary(sim8.Para.B2.round2[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set    difference.set     length.set    
+# Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :9.8     Min.   : 8.697   Min.   :-1.043   Min.   :-2.902  
+# 1st Qu.:0.240   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:9.8     1st Qu.: 9.445   1st Qu.:-0.162   1st Qu.:-2.022  
+# Median :0.490   Median :0.000   Median :0.000   Median :9.8     Median : 9.703   Median : 0.097   Median :-1.883  
+# Mean   :0.494   Mean   :0.005   Mean   :0.006   Mean   :9.8     Mean   : 9.718   Mean   : 0.082   Mean   :-1.895  
+# 3rd Qu.:0.740   3rd Qu.:0.000   3rd Qu.:0.000   3rd Qu.:9.8     3rd Qu.: 9.962   3rd Qu.: 0.355   3rd Qu.:-1.762  
+# Max.   :1.000   Max.   :0.380   Max.   :0.670   Max.   :9.8     Max.   :10.843   Max.   : 1.103   Max.   :-1.282  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000    NA's   :22000 
+##############hist m3 has the lowest low coverage############
 hist(sim8.nonPara.percentile.B2.round2$coverage.set)
 hist(sim8.nonPara.BCa.B2.round2$coverage.set)
 hist(sim8.Para.B2.round2$coverage.set)
+######summary conlclusion###################
+# 1. coverage becomes normal
+# 2. all mehtods' not coveraged means tend to be balanced
+# 3. boot mean no obvious difference
+# 4. ci lenght  no obvious difference
 
-# B3, round3
-sim8.B3.round3 <- sim8[which(sim8$B.set == 100 & sim8$round.set == 10),]
+################################################################
+
+##################### B3, round3####################
+sim8.B3.round3 <- sim8[which(sim8$B.set == 1000 & sim8$round.set == 1000),]
 sim8.nonPara.percentile.B3.round3  <- sim8.B3.round3[which(sim8$method.set == 1),]
 sim8.nonPara.BCa.B3.round3 <- sim8.B3.round3[which(sim8$method.set == 2),]
 sim8.Para.B3.round3 <- sim8.B3.round3[which(sim8$method.set == 3),]
@@ -1265,9 +1359,52 @@ print("Non-Parametric BCa------------------------------")
 summary(sim8.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
 print("Parametric Percentile Method--------------------")
 summary(sim8.Para.B3.round3[c(2,3,4,5,6,10,11)])
-
+######summary result####################
+# > print("Non-Parametric Percentile Method----------------")
+# [1] "Non-Parametric Percentile Method----------------"
+# > summary(sim8.nonPara.percentile.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :9.8     Min.   :10.45   Min.   :-0.742   Min.   :-2.081  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:9.8     1st Qu.:10.49   1st Qu.:-0.708   1st Qu.:-1.880  
+# Median :0.500   Median :0       Median :0       Median :9.8     Median :10.50   Median :-0.700   Median :-1.840  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :9.8     Mean   :10.50   Mean   :-0.700   Mean   :-1.842  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:9.8     3rd Qu.:10.51   3rd Qu.:-0.691   3rd Qu.:-1.800  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :9.8     Max.   :10.54   Max.   :-0.653   Max.   :-1.620  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+# > print("Non-Parametric BCa------------------------------")
+# [1] "Non-Parametric BCa------------------------------"
+# > summary(sim8.nonPara.BCa.B3.round3[c(2,3,4,5,6,10,11)])
+#   coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+#  Min.   :0.001   Min.   :0       Min.   :0       Min.   :9.8     Min.   :10.46   Min.   :-0.734   Min.   :-2.110  
+#  1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:9.8     1st Qu.:10.49   1st Qu.:-0.704   1st Qu.:-1.882  
+#  Median :0.500   Median :0       Median :0       Median :9.8     Median :10.50   Median :-0.698   Median :-1.840  
+#  Mean   :0.500   Mean   :0       Mean   :0       Mean   :9.8     Mean   :10.50   Mean   :-0.697   Mean   :-1.841  
+#  3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:9.8     3rd Qu.:10.50   3rd Qu.:-0.691   3rd Qu.:-1.799  
+#  Max.   :1.000   Max.   :0       Max.   :0       Max.   :9.8     Max.   :10.53   Max.   :-0.659   Max.   :-1.621  
+#  NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+# > print("Parametric Percentile Method--------------------")
+# [1] "Parametric Percentile Method--------------------"
+# > summary(sim8.Para.B3.round3[c(2,3,4,5,6,10,11)])
+# coverage.set    smaller.set      bigger.set     truemean.set    bootmean.set   difference.set     length.set    
+# Min.   :0.001   Min.   :0       Min.   :0       Min.   :9.8     Min.   :10.44   Min.   :-0.755   Min.   :-2.402  
+# 1st Qu.:0.251   1st Qu.:0       1st Qu.:0       1st Qu.:9.8     1st Qu.:10.49   1st Qu.:-0.709   1st Qu.:-2.160  
+# Median :0.500   Median :0       Median :0       Median :9.8     Median :10.50   Median :-0.699   Median :-2.120  
+# Mean   :0.500   Mean   :0       Mean   :0       Mean   :9.8     Mean   :10.50   Mean   :-0.700   Mean   :-2.112  
+# 3rd Qu.:0.750   3rd Qu.:0       3rd Qu.:0       3rd Qu.:9.8     3rd Qu.:10.51   3rd Qu.:-0.690   3rd Qu.:-2.060  
+# Max.   :1.000   Max.   :0       Max.   :0       Max.   :9.8     Max.   :10.55   Max.   :-0.643   Max.   :-1.840  
+# NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000   NA's   :22000    NA's   :22000   
+##############hist####################
 hist(sim8.nonPara.percentile.B3.round3$coverage.set)
 hist(sim8.nonPara.BCa.B3.round3$coverage.set)
 hist(sim8.Para.B3.round3$coverage.set)
+######summary conlclusion###################
+# 1. coverage becomes normal
+# 2. all mehtods' not coveraged means tend to be balanced
+# 3. boot mean no obvious difference
+# 4. ci lenght m1 and m2 are better, m1 and m2 no obvious difference
+
+################################################################
+
+
 
 
