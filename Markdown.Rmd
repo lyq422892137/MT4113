@@ -1,0 +1,39 @@
+---
+title: "MT4113 Assignment3 Analysis"
+author: "170010240"
+date: "Nov. 2017"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# MT4113 A3
+
+This is the analysis report of MT4113 A3. 
+This is only used in RStudio.
+
+## Different Bootstrap Methods
+
+Method 1: Non-Parametric Percentile Method
+Method 2: Non-Parametric BCa
+Method 3: Parametric Percentile Method
+
+### Normal distribution (with alpha = 0.05, n = 50)
+
+#### B = 10, round = 10
+##### The summary of each methods
+```{r analysis, echo = FALSE}
+print("Non-Parametric Percentile Method----------------")
+summary(sim1.nonPara.percentile.B1.round1)
+print("Non-Parametric BCa------------------------------")
+summary(sim1.nonPara.BCa.B1.round1)
+print("Parametric Percentile Method--------------------")
+summary(sim1.Para.B1.round1)
+
+
+##### The histograms of each methods
+
+hist(sim1.nonPara.percentile.B1.round1$coverage.set)
+hist(sim1.nonPara.BCa.B1.round1$coverage.set)
+hist(sim1.Para.B1.round1$coverage.set)
+```

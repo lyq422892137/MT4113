@@ -36,6 +36,7 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
   length.set <-numeric(round)
   distribution.set <- numeric(round)
   truemean.set <- rep(lambda,round)
+  alpha.set <- rep(alpha, round)
   writeflag <- 1
   
   filepath <- "D:/MT4113/Info.txt"
@@ -108,7 +109,7 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
     }
   
   
-  info <- data.frame(method.set,coverage.set,smaller.set,bigger.set,truemean.set, bootmean.set, n.set,  B.set, round.set, difference.set, length.set, distribution.set)
+  info <- data.frame(method.set,coverage.set,smaller.set,bigger.set,truemean.set, bootmean.set, n.set,  B.set, round.set, difference.set, length.set, distribution.set, alpha.set)
   if(!file.exists(filepath)) {
     options(warn=-1) 
     write.table(info,file = filepath, append = TRUE, row.names = FALSE, sep = "\t")
