@@ -1,6 +1,14 @@
-filepath <- "D:/MT4113/Info.txt"
+#####################
+## this file helps me to analysis results
+## refer the end of planning doc.pdf
+
+# filepath <- "D:/MT4113/Info.txt" # the path where I store results under Windows
+filepath <- "Info.txt" # Linux's relative path
+
+# read the results
 boot.result <- read.table(file = filepath, header = TRUE)
 
+# here are some definitions
 # B1 : B =10
 # B2 : B ==100
 # B3: B ==1000
