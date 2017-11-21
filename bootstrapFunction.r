@@ -9,8 +9,8 @@
 ## output: the CI of the mean
 ## The upper limit a1 : (1-¦Á/2)(b+1)%th
 ## The lower limit a2:  ¦Á/2(b+1)%th
-NonPara.percentileMethod <- function(dataset, alpha = 0.05, B = 10000) {
-  NonPara.checkArguments(dataset,alpha, B)
+NonPara.percentileMethod <- function(dataset, alpha = 0.05, B = 1000) {
+  NonPara.checkArguments(dataset, alpha, B)
   n <- length(dataset)
   boot.meanNew <- bootStrap(dataset, B, n)
   # take the upper limit a1 and the lower limit a2
@@ -25,7 +25,7 @@ NonPara.percentileMethod <- function(dataset, alpha = 0.05, B = 10000) {
 ## output: the CI of the mean
 ## The upper limit a1 : stated in the lecture notes
 ## The lower limit a2:  stated in the lecture notes
-NonPara.BCaMethod <- function(dataset, alpha = 0.05, B = 10000) {
+NonPara.BCaMethod <- function(dataset, alpha = 0.05, B = 1000) {
   NonPara.checkArguments(dataset,alpha, B)
   n <- length(dataset)
   sampleMean <- mean(dataset) # the mean of the data set
@@ -54,7 +54,7 @@ NonPara.BCaMethod <- function(dataset, alpha = 0.05, B = 10000) {
 
 ## parametric bootstrap with percentile method
 ## the user should know the distribution of the data
-Para.percentileMethod <- function(dataset, alpha = 0.05, B = 10000, distribution = "normal") {
+Para.percentileMethod <- function(dataset, alpha = 0.05, B = 1000, distribution = "normal") {
   disType <- Para.checkArguments(dataset, alpha, B, distribution) # the type of distribution
   lambda <- mean(dataset)
   if(disType == 1) { # poisson
@@ -64,7 +64,7 @@ Para.percentileMethod <- function(dataset, alpha = 0.05, B = 10000, distribution
     boot.new.data <- replicate(B,rnorm(length(dataset), lambda, sd))
   }
   # calculate the mean set of the bootstrap data
-  boot.mean <- apply(boot.new.data, 1, mean)
+  boot.mean <- apply(boot.new.data, 2, mean)
   boot.mean <- sort(boot.mean)
   # take the upper limit a1 and the lower limit a2
   a1 <- (1-alpha/2)  
@@ -104,10 +104,10 @@ NonPara.balancedBootstrap <- function(dataset, alpha = 0.05, B = 1000, sets = 10
     # print(length(data.subset2))
     # print(length(data.subset1))
     #print(data.newset)
-    data.newset <- sample(dataset,B,replace = FALSE)
+    data.newset <- sample(dataset,B,replace = TRUE)
     data.newset <- sample(data.newset,B)
     data.newset <- matrix(data.newset,ncol = sets, byrow = TRUE)
-    boot.means.set <- apply(data.newset, 1, mean)
+    boot.means.set <- apply(data.newset, 2, mean)
     boot.means.set <- sort(boot.means.set)
     a1 <- (1-alpha/2)  
     a2 <- alpha/2 
@@ -170,10 +170,9 @@ Para.checkArguments <- function(arg1, arg2, arg3, arg4) {
 # n: the length of dataset
 bootStrap <- function(dataset, B, n) {
   # generate the bootstrap data set
-  boot.set <- replicate(B, dataset[sample.int(n, replace = FALSE)])
-  #boot.set <- sample(boot.set, B)
+  boot.set <- replicate(B, dataset[sample.int(n, replace = TRUE)])
   # generate the mean set by bootstrap
-  boot.mean <- apply(boot.set, 1, mean)
+  boot.mean <- apply(boot.set, 2, mean)
   # order the mean set from low to high
   boot.mean.newset <- sort(boot.mean)
 }
@@ -182,7 +181,7 @@ bootStrap <- function(dataset, B, n) {
 ## inputs:
 # data: the input data
 NonPara.SingleEst <- function(data) {
-  mean(data[sample.int(length(data), replace = FALSE)])
+  mean(data[sample.int(length(data), replace = TRUE)])
 }
 
 

@@ -22,12 +22,22 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
   count.right.set <- numeric(3)
   count.left.set <- numeric(3)
   
+  method.set <- numeric(round)
+  coverage.set <- numeric(round)
+  smaller.set <- numeric(round)
+  bigger.set <- numeric(round)
+  bootmean.set <- numeric(round)
+  n.set <- numeric(round)
+  B.set <- numeric(round)
+  difference.set <- numeric(round)
+  length.set <-numeric(round)
+  distribution.set <- numeric(round)
   data.mean <- lambda
   
     for(i in 1:round) {
       result1 <- NonPara.percentileMethod(dataset = data, alpha = alpha, B = B)
       result2 <- NonPara.BCaMethod(dataset = data, alpha = alpha, B = B)
-    
+      
       if(dataType == 0) { # normal
         result3 <- Para.percentileMethod(dataset = data, alpha =  alpha, distribution = "normal", B = B)
       } else { # poisson
@@ -57,11 +67,18 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
 
     }
   
-
-  outputs(1,result1,data.mean,count.overall.set[1],count.left.set[1], count.right.set[1], round, differ1)
-  outputs(2,result2,data.mean,count.overall.set[2],count.left.set[2], count.right.set[2], round, differ2)
-  outputs(3,result3,data.mean,count.overall.set[3],count.left.set[3], count.right.set[3], round, differ3)
+  print("result1----------------")
   print(result1)
+  print("result2----------------")
+  print(result2)
+  print("result3----------------")
+  print(result3)
+  
+  outputs(1,result1,data.mean,count.overall.set[1],count.left.set[1], count.right.set[1], round, differ1)
+  
+  outputs(2,result2,data.mean,count.overall.set[2],count.left.set[2], count.right.set[2], round, differ2)
+  
+  outputs(3,result3,data.mean,count.overall.set[3],count.left.set[3], count.right.set[3], round, differ3)
   
  
 }
@@ -149,5 +166,10 @@ classify <- function(result, truemean, count.overall, count.left, count.right) {
   outcome <- list(count.overall,count.right,count.left,difference)
   return(outcome)
 
+}
+
+
+backUp <- function(methodType, coverage, smaller, biggger, truemean, bootmean, n, B, round, difference, CIlength, distributionType) {
+  
 }
 
