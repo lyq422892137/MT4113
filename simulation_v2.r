@@ -61,6 +61,7 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
   outputs(1,result1,data.mean,count.overall.set[1],count.left.set[1], count.right.set[1], round, differ1)
   outputs(2,result2,data.mean,count.overall.set[2],count.left.set[2], count.right.set[2], round, differ2)
   outputs(3,result3,data.mean,count.overall.set[3],count.left.set[3], count.right.set[3], round, differ3)
+  print(result1)
   
  
 }

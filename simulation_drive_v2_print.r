@@ -6,17 +6,16 @@ generateData <- function(type = 0, n = 30, lambda = 0, sd = 1, seed = 999) {
   if(type == 0) { # normal
     data.set <-rnorm(n,lambda,sd)
   } else { # poisson
-    data.set <- rpois(n,lambda)
+    data.set <- rpois(n ,lambda)
   }
-  newdata <- sample(data.set, n)
   return(data.set)
 }
 
 
 ######################################################################
 
-sim.data <- c(1:1000)
-sim.data <- sample(sim.data,100)
+sim.data <- c(1:10000)
+sim.data <- sample(sim.data,1000, replace = FALSE)
 simulation.v2(data = sim.data, lambda = mean(sim.data), alpha =  0.05,  round = 10, B = 1000)
 
 #####################################################################
@@ -24,7 +23,7 @@ simulation.v2(data = sim.data, lambda = mean(sim.data), alpha =  0.05,  round = 
 #sink('D:/MT4113/Simulation1.txt')
 for(u in 1:200){
   print("                                                      ")
-  sim.data <- generateData(n = 50, lambda = 9.888, sd = 4)
+  sim.data <- generateData(n = 50, lambda = 9.888)
   mean(sim.data)
   print("    round 10     ")
   simulation.v2(data = sim.data, lambda = 9.888, round = 10)

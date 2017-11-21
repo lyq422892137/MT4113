@@ -104,7 +104,7 @@ NonPara.balancedBootstrap <- function(dataset, alpha = 0.05, B = 1000, sets = 10
     # print(length(data.subset2))
     # print(length(data.subset1))
     #print(data.newset)
-    data.newset <- sample(dataset,B,replace = TRUE)
+    data.newset <- sample(dataset,B,replace = FALSE)
     data.newset <- sample(data.newset,B)
     data.newset <- matrix(data.newset,ncol = sets, byrow = TRUE)
     boot.means.set <- apply(data.newset, 1, mean)
@@ -170,7 +170,7 @@ Para.checkArguments <- function(arg1, arg2, arg3, arg4) {
 # n: the length of dataset
 bootStrap <- function(dataset, B, n) {
   # generate the bootstrap data set
-  boot.set <- replicate(B, dataset[sample.int(n, replace = TRUE)])
+  boot.set <- replicate(B, dataset[sample.int(n, replace = FALSE)])
   #boot.set <- sample(boot.set, B)
   # generate the mean set by bootstrap
   boot.mean <- apply(boot.set, 1, mean)
@@ -182,7 +182,7 @@ bootStrap <- function(dataset, B, n) {
 ## inputs:
 # data: the input data
 NonPara.SingleEst <- function(data) {
-  mean(data[sample.int(length(data), replace = TRUE)])
+  mean(data[sample.int(length(data), replace = FALSE)])
 }
 
 

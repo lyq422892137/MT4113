@@ -4,12 +4,12 @@ source('D:/MT4113/simulation_v2.r')
 generateData <- function(type = 0, n = 30, lambda = 0, sd = 1, seed = 999) {
   #set.seed(seed)
   if(type == 0) { # normal
-    data.set <-rnorm(n,lambda,sd)
+    data.set <-rnorm(n * 10,lambda,sd)
   } else { # poisson
-    data.set <- rpois(n,lambda)
+    data.set <- rpois(n * 10 ,lambda)
   }
-  newdata <- sample(data.set, n)
-  return(data.set)
+  newdata <- sample(data.set, n, replace = FALSE)
+  return(newdata)
 }
 
 
