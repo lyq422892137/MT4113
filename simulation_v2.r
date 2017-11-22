@@ -1,7 +1,8 @@
-#### simulation
+# I confirm that the attached is my own work, except where clearly indicated in the text.
+#### this file is to store the simulation function
 ## source the r file containing bootstrap functions
-# source('bootstrapFunction.r')
-source('D:/MT4113/bootstrapFunction.r') # under Windows
+source('bootstrapFunction.r') # for Linux
+# source('D:/MT4113/bootstrapFunction.r') # under Windows
 ################################################################
 ###############################################################
 #### simulation.v2:
@@ -16,6 +17,8 @@ source('D:/MT4113/bootstrapFunction.r') # under Windows
 # B: resample times
 simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0, alpha = 0.05, B = 1000) {
   dataType <- checkArguments(data,round,distribution,lambda,alpha,B)
+  
+  # declare variables
   differ1 <- numeric(round)
   differ2 <- numeric(round)
   differ3 <- numeric(round)
@@ -39,7 +42,8 @@ simulation.v2 <- function(data, round = 10, distribution = "normal", lambda = 0,
   alpha.set <- rep(alpha, round)
   writeflag <- 1
   
-  filepath <- "D:/MT4113/Info.txt"
+  # filepath <- "D:/MT4113/Info.txt" for my computer
+  filepath <- "Info.txt" # for linux
     
   data.mean <- lambda
   
@@ -196,8 +200,8 @@ outputs <- function(type, bootmean, Tmean, count1, count2, count3, round, differ
   print(paste("The mean of the boostrap: ", mean(bootmean)))
   print(paste("The difference of the means: ", Tmean - mean(bootmean)))
   
-  #hist(bootmean)
-  #abline(v = Tmean, col = "green")
+  hist(bootmean)
+  abline(v = Tmean, col = "green")
   
 }
 

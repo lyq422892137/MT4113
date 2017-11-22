@@ -1,3 +1,4 @@
+# I confirm that the attached is my own work, except where clearly indicated in the text.
 #####################
 ## this file helps me to analysis results
 ## refer the end of planning doc.pdf

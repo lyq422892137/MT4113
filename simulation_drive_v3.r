@@ -1,5 +1,11 @@
-source('D:/MT4113/simulation_v2.r')
+# I confirm that the attached is my own work, except where clearly indicated in the text.
+# source('D:/MT4113/simulation_v2.r') for my computer under Windows
 
+################
+## this file used to generate different simulations
+## details are in plannin document.pdf Page 5 The table: New testings
+
+source('simulation_v2.r') # for Linux
 # generate a dataset
 generateData <- function(type = 0, n = 30, lambda = 0, sd = 1, seed = 999) {
   #set.seed(seed)
